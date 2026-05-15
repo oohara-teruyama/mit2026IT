@@ -1,0 +1,304 @@
+/* ==== パスワード保護による表示制御 ==== */
+/* 認証されていないbodyの子要素のheaderとmainを非表示 */
+body:not(.authenticated) header,
+body:not(.authenticated) main {
+    display: none;
+}
+
+/* 認証されていないbodyの子要素のパスワードポップアップとオーバーレイを表示 */
+body:not(.authenticated) #password-popup,
+body:not(.authenticated) #overlay {
+     display: block;
+}
+
+/* 認証されたbodyの子要素のパスワードポップアップとオーバーレイを非表示 */
+body.authenticated #password-popup,
+body.authenticated #overlay {
+     display: none;
+}
+
+/* デフォルトではオーバーレイとポップアップは非表示にし、JSまたはCSSで制御 */
+/* body:not(.authenticated) のスタイルが優先される */
+#overlay, #password-popup {
+    display: none;
+}
+
+
+/* ==== 基本スタイル ==== */
+body {
+    font-family: sans-serif;
+    margin: 0; /* bodyのマージンをリセット */
+    padding: 20px; /* bodyの内側に余白 */
+    background-color: #FFF4E0; /* クリーム色のカラーコード */
+    line-height: 1.6; /* 行の高さを少し広げる */
+}
+
+header {
+    display: flex;
+    flex-direction: column; /* 要素を縦方向に並べる（h1とcontrols） */
+    align-items: center; /* 縦方向の中央に揃える */
+    margin-bottom: 30px; /* ヘッダーの下に余白 */
+    padding: 10px 20px; /* ヘッダーの内側に余白 */
+    background-color: #fff; /* ヘッダーの背景色 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* ヘッダーに影 */
+    border-radius: 8px; /* ヘッダーの角を丸く */
+}
+
+header h1 {
+    margin-top: 0;
+    margin-bottom: 20px; /* h1の下に余白 */
+    color: #333; /* タイトルの色 */
+}
+
+/* ==== パスワードポップアップのスタイル ==== */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* 少し濃いめのオーバーレイ */
+    z-index: 10;
+}
+
+#password-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 中央に配置 */
+    background-color: #fff;
+    padding: 30px; /* パディングを増やす */
+    border-radius: 8px; /* 角を丸く */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* 影を濃く */
+    z-index: 11; /* オーバーレイより上に */
+    text-align: center;
+    width: 90%; /* 幅を調整 */
+    max-width: 350px; /* 最大幅 */
+}
+
+#password-popup h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#password-input {
+    padding: 12px; /* パディングを増やす */
+    margin-bottom: 15px; /* マージンを増やす */
+    width: calc(100% - 24px); /* パディング分を引く */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box; /* widthにpaddingを含める */
+}
+
+#password-submit {
+    padding: 12px 25px; /* パディングを増やす */
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+#password-submit:hover {
+    background-color: #0056b3;
+}
+
+#message {
+    color: #dc3545; /* エラーメッセージの色 */
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+
+/* ==== フィルターと検索のコンテナ ==== */
+.controls {
+    display: flex; /* Flexboxを有効にする */
+    flex-wrap: wrap; /* 画面幅が狭い場合に折り返す */
+    justify-content: center; /* 子要素（.filterと.search-container）を中央寄せ */
+    align-items: center; /* 子要素を縦方向の中央に揃える */
+    width: 100%; /* 親要素（header）の幅いっぱいに広がるように */
+    gap: 15px; /* filterとsearch-containerの間に隙間 */
+    margin-bottom: 10px; /* controlsの下に少し余白 */
+}
+
+.filter {
+    display: flex; /* フィルターボタンをFlexアイテムに */
+    flex-wrap: wrap; /* ボタンが折り返すのを許可 */
+    justify-content: center; /* ボタンを中央寄せ */
+    gap: 8px; /* ボタン間の隙間 */
+    /* margin-bottom: 10px; /* controlsのgapがあるので不要かも */
+}
+
+.filter-button {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 5px; /* 角丸にする */
+    background-color: #f8f9fa; /* 薄い背景色 */
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.filter-button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.filter-button:hover:not(.active) { /* activeでないボタンのホバー */
+    background-color: #e9ecef; /* 少し濃いグレー */
+    border-color: #adadad;
+}
+
+.filter-button.active:hover { /* activeなボタンのホバー */
+    background-color: #0056b3; /* activeより少し暗く */
+    border-color: #0056b3;
+}
+
+
+.search-container {
+    display: flex; /* 入力とボタンをFlexアイテムに */
+    align-items: center; /* 縦方向の中央揃え */
+    gap: 5px; /* 入力とボタンの間の隙間 */
+    /* margin-bottom: 10px; /* controlsのgapがあるので不要かも */
+}
+
+.search-container input[type="text"] {
+    padding: 7px 8px; /* 縦方向のパディングを8pxから7pxに変更 */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    min-width: 150px;
+}
+
+.search-container button {
+    padding: 7px 15px; /* 縦方向のパディングを8pxから7pxに変更 */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+.search-container button:hover {
+    background-color: #0056b3;
+}
+
+
+/* ==== 学生アイテムのグリッドレイアウト ==== */
+.student-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* レスポンシブなグリッド */
+    gap: 20px; /* グリッドアイテム間の隙間 */
+}
+
+.student-item {
+    background-color: #fff; /* アイテムの背景色 */
+    border: 1px solid #ddd; /* アイテムの境界線 */
+    border-radius: 8px; /* 角を丸く */
+    padding: 15px; /* 内側の余白 */
+    text-align: center; /* テキスト中央寄せ */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* 影 */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* ホバー時のアニメーション */
+    display: block; /* hiddenクラスでdisplay:none;にするため、デフォルトはblock */
+}
+
+.student-item:hover {
+    transform: translateY(-5px); /* 少し浮かび上がる */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.15); /* 影を濃く */
+}
+
+.student-item a {
+    text-decoration: none; /* リンクの下線をなくす */
+    color: inherit; /* 親要素の色を継承 */
+    display: flex; /* Flexboxで内部要素を配置 */
+    flex-direction: column; /* 画像とテキストを縦に並べる */
+    align-items: center; /* 縦方向の中央に揃える */
+    justify-content: center; /* 横方向の中央に揃える */
+    height: 100%; /* 親要素いっぱいに高さを広げる */
+}
+
+.student-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 30%; /* 丸いアイコン */
+    object-fit: cover; /* 画像の比率を維持して要素に合わせる */
+    margin-bottom: 8px; /* 画像の下に余白 */
+    border: 2px solid #eee; /* アイコンに薄い枠線 */
+}
+
+.student-item p {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    word-break: break-word; /* 長い単語の途中で改行 */
+    color: #555; /* 名前の色 */
+}
+
+/* 検索・フィルターで非表示にするアイテムのスタイル */
+.student-item.hidden {
+    display: none;
+}
+
+/* レスポンシブ対応のための調整 */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    header {
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    #password-popup {
+        padding: 20px;
+    }
+
+    .controls {
+        gap: 10px; /* 小さい画面では隙間を少し小さく */
+    }
+
+    .filter-button {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    .search-container input[type="text"] {
+        padding: 6px;
+        font-size: 0.9rem;
+        min-width: unset; /* 最小幅をリセット */
+        width: 100px; /* 幅を調整 */
+    }
+
+     .search-container button {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+     }
+
+
+    .student-grid {
+        gap: 15px;
+    }
+
+    .student-item {
+        padding: 10px;
+    }
+
+    .student-item img {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 5px;
+    }
+
+    .student-item p {
+        font-size: 0.9rem;
+    }
+}

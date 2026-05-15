@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>照山楓の自己紹介サイト - 好きなもの</title> <link rel="stylesheet" href="style.css"> </head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Kaede Teruyama</h1>
+            <p>Welcome to my profile site!</p>
+            <nav>
+                <ul>
+                    <li><a href="index.html">トップ</a></li>
+                    <li><a href="career.html">基本情報</a></li> <li><a href="pets.html">ペット紹介</a></li>
+                    <li class="active"><a href="favorites.html">好きなもの</a></li>
+                    <li><a href="kodawari.html">こだわり</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <canvas id="mainBackgroundCanvas"></canvas>
+
+        <div class="container"> <section id="favorites"> <h2>好きなもの</h2>
+                <p>基本雑食なのでいろいろなことに手を出し、人として気持ち悪くなる直前までやりこみます。何を書くかとても悩んだので長期的に行っているものを抽出しました。漫画やアニメ・映画・本も教養として学んでいます。会話の幅は広い方です。</p>
+
+                <section id="music">
+                    <h3>音楽</h3>
+                    <h4>好きなアーティスト</h4>
+                    <p>今までハマったアーティストさんが多すぎて選びきれない！そして好きな曲も選びきれない！アーティストさんを触ると好きな曲が見れます。</p>
+                    <ul class="artist-list">
+                        <li><button class="artist-button" data-artist-id="mrsgreenapple">Mrs.GREEN APPLE</button></li>
+                        <li><button class="artist-button" data-artist-id="sumika">sumika</button></li>
+                        <li><button class="artist-button" data-artist-id="macaroniempitsu">マカロニえんぴつ</button></li>
+                        <li><button class="artist-button" data-artist-id="neguse">ねぐせ。</button></li>
+                        <li><button class="artist-button" data-artist-id="shytaipei">シャイトープ</button></li>
+                        <li><button class="artist-button" data-artist-id="marcy">マルシィ</button></li>
+                        <li><button class="artist-button" data-artist-id="mrchildren">超特急</button></li>
+                        <li><button class="artist-button" data-artist-id="radwimps">RADWIMPS</button></li>
+                    </ul>
+                    <h4>音楽の楽しみ方</h4>
+                    <p>「ハマる→曲を全て聞く→独自のセットリストを作成し、ライブを開催する」という流れが好きです</p>
+                </section> <section id="crafting">
+                    <h3>ものを作る</h3>
+                    <p>縫物・編物・お絵描き（LINEスタンプ・Tシャツ作成）・動画作成・3Dモデル作成など作るのが好きです。出来は関係ありません。作るという達成感に喜びを感じるのです。</p>
+                    <div class="crafting-gallery">
+                        <img src="img/base.png" alt="カピバラ">
+                        <img src="img/hebi.jpg" alt="ヘビ">
+                        <img src="img/LINE.jpg" alt="LINE">
+                    </div>
+                </section> <div id="song-popup" class="popup">
+                    <div class="popup-content">
+                        <span class="close-button">&times;</span> <h4 id="popup-artist-name"></h4> <ul id="popup-song-list"></ul> </div>
+                </div>
+                </section> </div> </main>
+
+    <footer>
+        <div class="container">
+           <p>&copy; 2026.5.KaedeTeruyama</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script> </body>
+</html>

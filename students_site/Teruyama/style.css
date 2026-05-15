@@ -1,0 +1,684 @@
+/* style.css */
+
+/* 全体の基本設定 */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* ヘッダーのスタイル */
+header {
+    background-color: #a9a9a9;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+header h1 {
+     margin-top: 0;
+     color: #fff;
+ }
+
+nav ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #636363;
+}
+
+/* メインコンテンツエリアのスタイル */
+main {
+    position: relative; /* Canvasを絶対配置するための基準にする */
+    /* TODO: ヘッダーの高さに合わせてmargin-topを調整 */
+    margin-top: 20px; /* 例: ヘッダーの下に少し余白 */
+    padding: 20px; /* 全体にパディング */
+    max-width: 1500px; /* 最大幅を設定して中央寄せ */
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden; /* Canvasやコンテンツがmainからはみ出さないように */
+    /* main自体の背景色は不要 */
+     /*background-color: #fff; */
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    /* border-radius: 8px; */
+    min-height: auto; /* コンテンツが短い場合でも背景が見えるように最低高さを設定（任意） */
+}
+
+/* メインコンテンツエリア全体の背景Canvasのスタイル */
+#mainBackgroundCanvas {
+    position: absolute; /* 親要素 (main) を基準に絶対配置 */
+    top: 0;
+    left: 0;
+    width: 100%; /* 親要素の幅いっぱいに広げる */
+    height: 100%; /* 親要素の高さいっぱいに広げる */
+    z-index: 1; /* メインコンテンツより背面に表示 */
+    display: block;
+    pointer-events: none; /* Canvas上のマウスイベントを無効化 */
+}
+
+
+/* 各セクションのスタイル（#about を含む、メインコンテンツ内の一般的なセクション） */
+section {
+    position: relative; /* Canvas (z-index: 1) より前面に来るように */
+    z-index: 2; /* Canvasより上に表示 */
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    background-color: transparent; /* セクション自体の背景は透明に（Canvasが見える）*/
+}
+
+/* -------- ごあいさつセクションのスタイル（白い無地の枠）-------- */
+#about ,#pets-intro{
+    /* position: relative; <- 既にsectionで設定済み */
+    /* z-index: 2; <- 既にsectionで設定済み */
+    background-color: #fff; /* 白い背景色 */
+    padding: 30px; /* 内側の余白 */
+    margin: 20px auto; /* 上下マージン、左右autoでmain内で中央寄せ */
+    /* border: 1px solid #ddd; */ /* 削除またはコメントアウト */
+    border-radius: 8px; /* 角を少し丸く（必要なければ削除） */
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */ /* 削除またはコメントアウト */
+    max-width: 700px; /* 枠の最大幅を制限 */
+    box-sizing: border-box; /* paddingをwidth/max-widthに含める */
+    border-bottom: none; /* このセクションの下線は不要 */
+    margin-bottom: 20px; /* 次のセクションとの間に余白 */
+    /* overflow: hidden; */ /* Canvasが外に出たので削除 */
+     /* セクション全体の背景を透明に設定したが、#aboutは白い枠なので背景を白に戻す */
+     background-color: #fff;
+}
+
+/* #aboutCanvas のスタイルは削除 */
+
+
+/* ごあいさつセクション内のコンテンツ（見出しや段落）のスタイル */
+/* 親の#aboutにz-indexがあるので、必須ではない */
+#about h2,
+#about p {
+     /* position: relative; */
+     /* z-index: 2; */
+ }
+
+
+#about h2 {
+    color: #555;
+    border-bottom-color: #eee;
+}
+/* -------------------------------------------------------- */
+
+
+/* フッターのスタイル */
+footer {
+    background-color: #a9a9a9;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+    margin-top: 20px; /* 例: メインコンテンツとの間に余白 */
+}
+
+
+/* ペット紹介内の個別のペットブロック */
+
+
+
+#pets-intro {
+    /* #about 以外のセクション共通スタイルは section{} で設定済み */
+    /* 必要に応じて #pets-intro 固有のスタイルをここに追加 */
+     color: #555;
+     margin-bottom: 40px; /* セクションの下余白（section{}と重複する場合あり） */
+     padding-bottom: 60px;
+}
+
+.pet-gallery {
+    display: grid; /* これで Grid レイアウトを有効にする */
+    grid-template-columns: repeat(3, 1fr); /* 3つの列を作成。それぞれが利用可能な幅を均等に分け合う */
+    gap: 20px; /* 列と行の間隔を20pxにする */
+    margin-top: 30px; /* ペット紹介の導入文との間に余白 */
+    /* 必要に応じて、写真の並びが中央に来るように調整 */
+    /* justify-content: center; */ /* アイテム全体を中央寄せする場合 */
+    column-gap: 20px;
+    row-gap: 50px;
+}
+
+.pet-item {
+    /* 各ペット情報ブロックのスタイル */
+    /* background-color, border-radius, box-shadow, overflow: hidden; などはそのまま維持 */
+    /* text-align: center; */ /* 写真やテキストを中央寄せしたい場合（維持または調整） */
+
+    position: relative; /* <-- 追加: imgを絶対配置するための基準 */
+    height: 0; /* <-- 追加: 高さを0にして、paddingでアスペクト比を制御 */
+    padding-top: 100%; /* <-- 追加: 親要素の幅に対する高さの比率を1:1（正方形）にする */
+    padding-bottom: 10px; /* <-- 追加: 写真の下（padding-topの下）にテキストのための余白 */
+    /* margin-bottom: 10px; */ /* <-- 必要に応じて Gridアイテム間の下余白 */
+
+    /* 必要に応じて、各項目の内側に左右の余白を追加する場合は padding-left/right を調整 */
+    /* padding-left: 10px; padding-right: 10px; */
+}
+
+.pet-item img {
+    display: block;
+    width: 100%; /* <-- そのまま: 親要素 (.pet-item) の幅いっぱいに広げる */
+    height: 100%; /* <-- 変更: 親要素 (.pet-item) の高さ（padding-topでできた高さ）いっぱいに広げる */
+    object-fit: cover; /* <-- 追加: アスペクト比を維持しつつ、要素全体を覆うように画像を切り抜く */
+    /* border-bottom: 1px solid #eee; */ /* 写真の下に区切り線が必要なら維持 */
+    /* margin-bottom: 10px; */ /* <-- 削除: このマージンは不要になる */
+    border-radius: 8px; /* <-- 角を8ピクセル丸める */
+    position: absolute; /* <-- 追加: 親要素 (.pet-item) を基準に絶対配置 */
+    top: 0; /* <-- 追加: 親要素の上端に配置 */
+    left: 0; /* <-- 追加: 親要素の左端に配置 */
+}
+
+.pet-item p {
+    /* 写真の下のコメントのスタイル */
+    /* font-size, color はそのまま */
+    /* margin: 10px; */ /* 必要に応じて調整。上下のmarginはpadding-bottomや次の要素とのmarginで調整 */
+    text-align: center;  /* コメントのテキスト配置（維持または調整） */
+    
+
+    position: relative; /* <-- 追加: 絶対配置されたimgより手前に表示するため */
+    z-index: 2; /* <-- 追加: img (z-indexのデフォルトは0) より手前に */
+    margin-top: 10px; /* <-- 追加/変更: imgの下の余白はpadding-bottomで確保するため、テキスト自体のmargin-topは0に */
+}
+
+
+/* style.css */
+
+/* ... 既存のスタイル ... */
+
+/* -------- こだわりセクションの見出し（例: こだわり その１）-------- */
+/* #kodawari-intro セクション内の h3 のスタイル */
+#kodawari-intro h3 {
+    color: #555; /* <-- 例: 少し濃い目のグレーに */
+    margin-top: 30px; /* <-- 例: セクション内容との間に余白 */
+    margin-bottom: 15px; /* <-- 例: 見出しの下に余白 */
+    border-bottom: 1px dashed #ccc; /* <-- 例: 破線の下線 */
+    padding-bottom: 5px;
+    /* 必要に応じて他のスタイルを追加 */
+}
+#kodawari-intro {
+    color: #555;
+    background-color: #fff; /* 白い背景色 */
+    padding: 30px; /* 内側の余白 */
+    margin-top: 30px; /* container内の上余白 */
+    margin-bottom: 30px; /* container内の下余白 */
+    margin-left: auto; /* container内で中央寄せ */
+    margin-right: auto; /* container内で中央寄せ */
+    max-width: 700px; /* 枠の最大幅（#aboutと同じで揃える） */
+    box-sizing: border-box;
+    border-bottom: none; /* セクションのデフォルト下線を上書き */
+    border-radius: 8px; /* 例: 角を丸く（#aboutと同じ） */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 例: 影をつける（#aboutと同じ） */
+     /* overflow: hidden; <- 必要であれば追加 (子要素のはみ出しを防ぐ) */
+}
+
+
+/* 個別のこだわりセクション (#kodawari-one, #kodawari-two) に固有のスタイルが必要な場合 */
+/* 例: こだわり その１ の背景色を変える */
+
+#kodawari-one ,#kodawari-two{
+    background-color: #ededed;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 5px solid #a7a7a7;
+}
+
+
+#career-info {
+    color: #555;
+    background-color: #fff; /* 白い背景色 */
+    padding: 30px; /* 内側の余白 */
+    margin-top: 30px; /* container内の上余白 */
+    margin-bottom: 30px; /* container内の下余白 */
+    margin-left: auto; /* container内で中央寄せ */
+    margin-right: auto; /* container内で中央寄せ */
+    max-width: 700px; /* 枠の最大幅（#aboutと同じで揃える） */
+    box-sizing: border-box;
+    border-bottom: none; /* セクションのデフォルト下線を上書き */
+    border-radius: 8px; /* 例: 角を丸く（#aboutと同じ） */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 例: 影をつける（#aboutと同じ） */
+     /* overflow: hidden; <- 必要であれば追加 (子要素のはみ出しを防ぐ) */
+}
+#kihon-ex {
+    /* section の共通スタイルを継承 */
+    /* 必要に応じて #kihon-ex 固有のスタイルを追加 */
+}
+
+.kihon-content {
+    display: flex; /* 子要素 (ulとimg) を横並びにする */
+    align-items: center; /* 子要素を垂直方向の中央に揃える */
+    gap: 30px; /* ulとimgの間の隙間を設定 */
+    flex-wrap: wrap; /* 画面幅が狭い場合に折り返す */
+}
+
+#kihon-ex ul {
+    list-style: none; /* 箇条書きの点を削除 */
+    padding: 0; /* デフォルトの左右パディングを削除 */
+    margin: 0; /* デフォルトの上下マージンを削除 */
+    margin-left: 80px;
+    flex-grow: 1; /* 利用可能なスペースを埋めるようにulを広げる */
+    /* flex-basis: 60%; */ /* 例: ulの初期幅を60%に設定 */
+}
+
+#kihon-ex li {
+    margin-bottom: 8px; /* 箇条書き項目間の下余白 */
+    /* 必要に応じて、文字と文字の間にスペースを追加する場合は padding-left や text-indent を調整 */
+}
+
+#kihon-ex img {
+    display: block;
+    width: 150px; /* 写真の幅を設定 */
+    height: 150px; /* 写真の高さを設定 (幅と同じ値で正方形に) */
+    object-fit: cover; /* 写真を正方形の枠に合わせて切り抜く */
+    border-radius: 50%; /* 例: 写真を丸くする */
+    flex-shrink: 0; /* 画面幅が狭まっても画像が縮まないようにする */
+    margin-right: 150px;
+    flex-shrink: 0;
+    transform: rotate(-8deg); /* <-- 左に5度回転 */
+}
+
+
+#seikaku {
+    /* section の共通スタイルを継承 */
+   /* 必要に応じて #seikaku 固有のスタイルを追加 */
+}
+
+#seikaku ul {
+   list-style: none; /* 箇条書きの点を削除 */
+   padding: 0; /* デフォルトのパディングを削除 */
+   margin: 0; /* デフォルトのマージンを削除 */
+   display: flex; /* 子要素 (li) を Flex アイテムにする */
+   flex-wrap: wrap; /* 子要素が複数行に折り返すようにする */
+   gap: 15px; /* 子要素間の隙間 */
+   /* justify-content: center; */ /* 子要素を中央寄せしたい場合 */
+}
+
+#seikaku li {
+   background-color: #fff; /* 白い背景 */
+   padding: 15px; /* 内側の余白 */
+   border: 1px solid #eee; /* 薄い枠線 */
+   border-radius: 8px; /* 角を丸く */
+   flex-basis: calc(50% - 10px); /* 例: 画面幅の約半分 - 隙間半分 で横に2つ並べる */
+   /* flex-basis: calc(33.33% - 10px); */ /* 例: 横に3つ並べる場合 */
+   box-sizing: border-box; /* paddingとborderを幅に含める */
+   margin-bottom: 0; /* Flexコンテナのgapが下余白になるため不要 */
+   /* 必要に応じてテキスト配置を調整 */
+   /* text-align: center; */
+}
+
+#seikaku li strong {
+    display: block; /* これで特性名が1行を占有し、次の要素が次の行に表示されます */
+    font-size: 1em; /* 少し大きめの文字サイズに */
+    margin-bottom: 5px; /* 特性名と説明の間に少し余白 */
+    font-weight: bold; /* 太字にする（必要なければ normal に） */
+    color: #555;
+}
+
+#seikaku li span {
+    display: block; /* これで説明部分が次の行に表示されます */
+    font-size: 0.9em; /* 通常の文字サイズに */
+    color: #555; /* 例: 説明の文字色 */
+    /* 必要に応じて、テキストが枠内に収まらない場合の処理を追加 */
+    /* overflow: hidden; */ /* 枠からはみ出た部分を隠す */
+    /* text-overflow: ellipsis; */ /* はみ出る場合に...で省略 */
+    /* white-space: nowrap; */ /* 改行させない (overflow: hidden とセットで使うことが多い) */
+}
+
+/* -------- 学歴・略歴セクションのタイムラインスタイル -------- */
+#education {
+    /* section の共通スタイルを継承 */
+    /* 必要に応じて #education 固有のスタイルを追加 */
+    margin-top: 40px; /* 例: 上のセクションとの間に余白 */
+}
+
+#education ul {
+    list-style: none; /* デフォルトのリストの点を削除 */
+    padding: 0; /* デフォルトの左右パディングを削除 */
+    margin: 0; /* デフォルトの上下マージンを削除 */
+    position: relative; /* 子要素 (li) の絶対配置の基準にする */
+    margin-left: 50px;
+}
+
+#education li {
+    position: relative; /* 疑似要素 (点と線) をこのliを基準に配置 */
+    padding-left: 40px; /* 点と線のための左側の余白 */
+    margin-bottom: 30px; /* リスト項目間の縦の余白 */
+    /* li自体にデフォルトの下線（border-bottom）がついている場合は、ここで none にするなど調整 */
+    border-bottom: none;
+}
+
+/* タイムラインの点 */
+#education li::before {
+    content: ''; /* 疑似要素には content が必要 */
+    position: absolute; /* li を基準に絶対配置 */
+    left: -8px; /* li の左端から少し左にずらし、線の上に点を配置 */
+    top: 0; /* li の上端に合わせる */
+    width: 16px; /* 点の幅 */
+    height: 16px; /* 点の高さ (幅と同じ値で丸になる) */
+    border: 2px solid #a9a9a9; /* 点の枠線の色と太さ */
+    background-color: #f4f4f4; /* 点の背景色 */
+    border-radius: 50%; /* 要素を丸くする */
+    z-index: 1; /* コンテンツ（テキスト）より手前に表示 */
+    transform: translateY(5px); /* テキストのベースラインや行の中央に点を配置するための微調整（必要に応じて調整） */
+}
+
+/* タイムラインの線 */
+#education li::after {
+    content: ''; /* 疑似要素には content が必要 */
+    position: absolute; /* li を基準に絶対配置 */
+    left: 0; /* li の左端に合わせる */
+    top: 13px; /* li の上端に合わせる */
+    bottom: -37px; /* li の下端 + margin-bottom の分だけ線を伸ばす */
+    width: 2px; /* 線の太さ */
+    background-color: #a9a9a9; /* 線の色 */
+    z-index: 0; /* 点やコンテンツ（テキスト）より奥に表示 */
+}
+
+/* 最初の項目の線の開始位置調整 */
+#education li:first-child::after {
+    top: 8px; /* 点の中心 (点の高さ/2) から線が始まるように */
+}
+
+/* 最後の項目の線の終了位置調整 */
+#education li:last-child::after {
+    content: none; /* 最後の項目には線を引かない */
+}
+
+/* 個別の学歴・略歴項目のテキストスタイル */
+/* liの中に「YYYY年 - 説明」のようなテキストが直接入っている場合、
+   li自体のパディングやマージンで調整します。 */
+#education li {
+    /* ... position, padding-left, margin-bottom, border-bottom: none; ... */
+    line-height: 1.6; /* 例: 行間を調整 */
+    /* 必要であれば文字色などを調整 */
+    /* color: #333; */
+}
+/* もしliの中に<p>タグなどでテキストを入れる場合は、別途スタイルを設定 */
+#education li p {
+    margin: 0; /* デフォルトマージン削除 */
+    padding: 0; /* デフォルトパディング削除 */
+    /* 必要であればスタイルを追加 */
+}
+
+#favorites {
+    background-color: #fff; /* 白い背景色 */
+    padding: 30px; /* 内側の余白 */
+    margin-top: 30px; /* container内の上余白 */
+    margin-bottom: 30px; /* container内の下余白 */
+    margin-left: auto; /* container内で中央寄せ */
+    margin-right: auto; /* container内で中央寄せ */
+    max-width: 700px; /* 枠の最大幅（他の白い枠と揃える） */
+    box-sizing: border-box;
+    border-bottom: none; /* セクションのデフォルト下線を上書き */
+    border-radius: 8px; /* 例: 角を丸く */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 例: 影をつける */
+     /* overflow: hidden; <- 必要であれば追加 (子要素のはみ出しを防ぐ) */
+}
+
+
+#favorites > section {
+    background-color: #f9f9f9; /* 例: 薄いグレーの背景 */
+    padding: 20px; /* 内側の余白 */
+    margin-bottom: 20px; /* 各項目間の下余白 */
+    border: 1px solid #eee; /* 薄い枠線 */
+    border-radius: 8px; /* 角を丸く */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* 軽い影 */
+    /* デフォルトの section スタイル（padding: 20px 0; や border-bottom）は上書きされます */
+    border-bottom: none; /* 各項目の下線は不要 */
+}
+
+/* 最後の項目だけ下余白を調整して、#favorites セクションの bottom margin に繋げる */
+#favorites > section:last-child {
+    margin-bottom: 0; /* 最後の項目自体の下マージンは0に */
+    /* #favorites セクション自体の margin-bottom で全体の余白は確保されます */
+}
+
+
+/* 各項目内の見出し (h3) スタイル */
+#favorites > section h3 {
+    color: #555; /* 例: 見出しの色 */
+    margin-top: 0; /* カード内の最初なので上の余白をなくす */
+    margin-bottom: 15px; /* 見出しの下に余白 */
+    border-bottom: 1px solid #ddd; /* 見出しの下に線 */
+    padding-bottom: 5px; /* 下線との間に余白 */
+}
+
+/* 各項目内の段落 (p) スタイル */
+#favorites > section p {
+    color: #333; /* 例: 段落の文字色 */
+    line-height: 1.6; /* 行間 */
+    margin-bottom: 15px; /* 段落間の下余白 */
+    /* 最後の段落の下余白調整は、:last-childなどで */
+}
+
+#favorites > section p:last-child {
+     margin-bottom: 0; /* 最後の段落の下マージンは0に */
+}
+
+.artist-list {
+    list-style: none; /* デフォルトの点を削除 */
+    padding: 0;
+    margin: 20px 0; /* 上下の余白 */
+    display: flex; /* Flexboxで子要素を横並びにする */
+    flex-wrap: wrap; /* 画面幅に合わせて折り返す */
+    gap: 10px; /* ボタン間の隙間 */
+    justify-content: center; /* 必要であればボタン全体を中央寄せ */
+}
+
+.artist-list li {
+    /* li 自体には特別なスタイルは不要（Flexアイテムになるため） */
+    margin: 0; /* デフォルトマージンをリセット */
+    padding: 0; /* デフォルトパディングをリセット */
+}
+
+.artist-button {
+    display: flex; /* Flexboxでボタン内のテキストを中央寄せ */
+    align-items: center; /* 垂直方向中央寄せ */
+    justify-content: center; /* 水平方向中央寄せ */
+
+    /* ▼▼▼ タグスタイルにするための修正 ▼▼▼ */
+    /* width と height を固定せず、padding でサイズを調整します */
+    /* width: 100px; <- 削除 */
+    /* height: 100px; <- 削除 */
+    /* border-radius を 50% からピクセル値に変更 */
+    /* border-radius: 50%; <- 削除 */
+
+    background-color: #dad7d7; /* 例: 背景色 */
+    color: #4e4e4e; /* 例: 文字色 */
+    font-size: 0.9em; /* 文字サイズ */
+    font-weight: bold; /* 太字 */
+    text-align: center; /* 中央寄せ */
+    cursor: pointer; /* カーソルをポインターに */
+    border: none; /* 枠線を削除 */
+    /* padding: 5px; <- 削除、下で新しいpaddingを設定 */
+    transition: background-color 0.3s ease; /* ホバー時のアニメーション */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影 */
+
+    /* 新しいタグの形状を定義 */
+    padding: 8px 15px; /* <-- 上下 8px, 左右 15px のパディング */
+    border-radius: 20px; /* <-- 角丸の度合い (パディングの高さに合わせて調整) */
+    white-space: nowrap; /* <-- テキストがタグ内で改行されないように */
+    height: auto; /* <-- 高さをコンテンツとパディングに合わせる */
+    /* width: auto; <- 幅をコンテンツとパディングに合わせる（デフォルトなので不要） */
+    /* ▲▲▲ タグスタイルにするための修正 ▲▲▲ */
+}
+
+.artist-button:hover {
+    background-color: #808080; /* 例: ホバー時の背景色 */
+    color: #fcfcfc;
+}
+/* -------- ポップアップのスタイル -------- */
+.popup {
+    display: none; /* 初期状態では非表示 */
+    position: fixed; /* 画面に固定 */
+    z-index: 100; /* 他の要素より前面に */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* 内容が画面より大きい場合にスクロール可能にする */
+    background-color: rgba(0, 0, 0, 0.6); /* 半透明の黒い背景 */
+    backdrop-filter: blur(5px); /* 例: 背景を少しぼかす (対応ブラウザのみ) */
+}
+
+.popup-content {
+    background-color: #fefefe; /* ポップアップ本体の背景色 */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* ポップアップ本体の幅 */
+    max-width: 500px; /* ポップアップ本体の最大幅 */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: fixed; /* <-- 画面に対して固定配置にする */
+    top: 50%; /* <-- 画面の上端から50%の位置に上端を合わせる */
+    left: 50%; /* <-- 画面の左端から50%の位置に左端を合わせる */
+    transform: translate(-50%, -50%); /* <-- 要素自身の幅・高さの半分だけ戻し、中央揃えにする */
+    z-index: 101; /* <-- ポップアップのオーバーレイ (通常 z-index: 100) より前面に */
+    /* ▲▲▲ 画面中央に固定配置するための追加 ▲▲▲ */
+}
+
+.popup-content h4 {
+    color: #555; /* ポップアップ内のアーティスト名見出しの色 */
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee; /* 下線 */
+    padding-bottom: 5px;
+}
+
+.popup-content ul {
+    list-style: disc; /* 曲リストの点のスタイル */
+    padding-left: 20px; /* 点のための左余白 */
+    margin: 0;
+}
+
+.popup-content li {
+    margin-bottom: 8px; /* 曲項目間の下余白 */
+    line-height: 1.4;
+}
+
+
+.close-button {
+    color: #aaa;
+    float: right; /* 右寄せ */
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute; /* ポップアップ本体を基準に絶対配置 */
+    top: 10px;
+    right: 15px;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ポップアップが表示されたときに body のスクロールを無効にするためのクラス (JSで追加) */
+body.modal-open {
+    overflow: hidden;
+}
+
+#crafting {
+    background-color: transparent; /* 前回設定した透過は維持 */
+    /* 必要に応じて padding, margin, border, box-shadow など調整 */
+    /* border: none; */
+    /* box-shadow: none; */
+    /* #favorites > section で設定した共通スタイルを継承しています */
+}
+
+/* ものを作るセクション内の見出し (h3) やテキスト (p) のスタイル（必要に応じて） */
+#crafting h3 {
+    /* 例: 見出しの下に余白を追加 */
+    margin-bottom: 20px;
+    /* #favorites > section h3 のスタイルを継承 */
+}
+#crafting p {
+     /* 例: テキストと画像ギャラリーの間に余白 */
+     margin-bottom: 20px;
+     /* #favorites > section p のスタイルを継承 */
+}
+
+
+/* ものを作るセクションの画像ギャラリーコンテナ */
+.crafting-gallery {
+    display: flex; /* Flexboxを使って画像（子要素）を横並びにする */
+    flex-wrap: wrap; /* 画面幅が狭くなったら、画像を次の行に折り返す */
+    gap: 15px; /* 画像間の隙間（縦横両方に適用） */
+    /* 必要に応じて、画像全体を中央寄せしたい場合 */
+    /* justify-content: center; */
+}
+
+/* ものを作るセクション内の個々の画像スタイル */
+.crafting-gallery img {
+    display: block; /* 画像の下に余分な隙間が入るのを防ぐ */
+    max-width: 30%; /* 親要素 (.crafting-gallery) の幅を超えないように */
+    height: 30%; /* 画像のアスペクト比（縦横比）を維持する */
+
+    /* 画像のサイズを調整 */
+    /* flex-basis は、Flexアイテムの初期サイズを設定します。
+       利用可能なスペースに応じて縮小・拡大されます。 */
+    flex-basis: 50%; /* 例: 各画像の基準幅を200pxに設定 */
+
+    /* もしくは、特定の数だけ横に並べたい場合 */
+    /* width: calc(33.33% - 10px); */ /* 例: 横に3つ並べる場合 (gap 15px を考慮して calc) */
+    /* height: 150px; */ /* 例: 高さを固定したい場合 */
+
+    /* object-fit: cover; */ /* 例: width/heightを固定した場合に、画像を切り抜いて枠に合わせる */
+
+    /* 画像のデザイン */
+    border-radius: 8px; /* 例: 角を丸くする */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 例: 軽い影をつける */
+    border: 1px solid #eee; /* 例: 薄い枠線を付ける */
+}
+
+
+.rousoku {
+    /* 例: div の上下に余白を追加して、他のコンテンツとの間にスペースを作る */
+    margin: 20px 0;
+    /* div の中のインライン要素（画像）を中央寄せ */
+    text-align: center;
+    /* 必要に応じて、div自体の幅を制限する場合は max-width と margin: auto; を追加 */
+    /* max-width: 300px; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+}
+
+/* .rousoku の中の画像スタイル */
+.rousoku img {
+    display: block; /* 画像の下に余分な隙間が入るのを防ぐ */
+    max-width: 100%; /* 親要素 (.rousoku) の幅を超えないように画像を縮小 */
+    height: auto; /* 画像のアスペクト比（縦横比）を維持する */
+
+    /* 例: 画像のサイズを調整 */
+    width: 550px; /* 例: 幅を150ピクセルに固定 */
+    /* もしくは、最大幅を指定してレスポンシブに対応 */
+    /* max-width: 200px; */
+
+    /* 例: 画像をブロック要素として中央寄せ（親要素の text-align: center; と併用） */
+    margin-left: auto;
+    margin-right: auto;
+
+    /* 例: 画像のデザイン */
+    border-radius: 8px; /* 角を少し丸く */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影 */
+    border: 1px solid #eee; /* 薄い枠線 */
+}
