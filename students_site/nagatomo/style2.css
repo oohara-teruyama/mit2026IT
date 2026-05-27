@@ -1,0 +1,276 @@
+@charset "utf-8";
+
+ body {
+    margin: 0;
+    padding: 0;
+    color: #333;
+ }
+ a { color: #8ebad6; }
+ a:visited { color: #a8a8a8; }
+ a:hover {
+    color: #0d58b4;
+    font-weight: bold;
+    text-decoration: none;
+ }
+ a img { transition: opacity 0.2s linear; }
+ a:hover img { opacity: 0.7; }
+ h1, h2, h3, h4, h5, h6 { margin-top: 0; }
+ p {
+    margin-top: 0;
+    line-height: 1.6;
+ }
+ img { vertical-align: bottom; }
+ #main h1 {
+    background-image: url(../images/header_bg.jpg);
+    padding: 30px 30px 30px 20px;
+    font-size: 24px;
+    border-bottom: solid 1px #0d58b4;
+ }
+ #main h2 {
+    font-size: 22px;
+    border: 1px solid #4992eb;
+    padding: 11px 22px;
+    border-radius: 5px;
+ }
+ #main h3 {
+    font-size: 25px;
+    border-left: solid 3px #4992eb;
+    padding: 4px 9px 4px 14px;
+ }
+ header {
+    width: 980px;
+    margin: 0 auto;
+ }
+ #global_navi {
+    width: 980px;
+    clear: both;
+    overflow: hidden;
+    margin: 16px auto;
+ }
+ #global_navi ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+ }
+ #global_navi ul li {
+    width: 244px;
+    float: left;
+    margin-right: 1px;
+    text-align: center;
+ }
+ #global_navi ul li a {
+    display: block;
+    padding: 16px;
+    background-color: #0d58b4;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.2s linear
+ }
+ #global_navi ul li.current a {
+    background-color: #8ebad6;
+ }
+ #global_navi ul li a:hover {
+    background-color: #4992eb;
+ }
+ #wrapper {
+  width: 980px;
+  margin: 0 auto;
+  overflow: hidden;
+ }
+ 
+ 
+ 
+ footer {
+   background-color: #352b23;
+   text-align: center;
+ }
+ footer #footer_nav {
+   background-color: #efefef;
+   padding: 10px 0;
+ }
+ footer #footer_nav ul {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+ }
+ footer #footer_nav li {
+   display: inline;
+   border-left: solid 1px #aaa;
+   margin-left: 8px;
+   padding-left: 8px;
+   font-size: smaller;
+ }
+ footer #footer_nav li:last-child {
+   border-right: solid 1px #aaa;
+   padding: 0 8px;
+ }
+ footer small {
+   display: block;
+   padding: 8px 0;
+   color: #fff;
+ }
+ #breadcrumb { 
+   font-size: smaller;
+   margin-bottom: 5px;
+ }
+ #breadcrumb ol {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+ }
+ #breadcrumb ol li { display: inline; }
+ #breadcrumb ol li::after {
+   content: ">";
+   padding-left: 7px;
+ }
+ #breadcrumb ol li:last-child::after { content: none; }
+
+
+
+ p.overwatch img {
+  width: 900px;
+ }
+
+ p.zenzero img {
+  width: 900px;
+ }
+
+ p.monhan img {
+  width: 900px;
+ }
+
+ p.singekinokyozin img {
+  width: 900px;
+ }
+
+ p.wa-rudotoriga- img {
+  width: 900px;
+ }
+
+ p.horimiya img {
+  width: 900px;
+ }
+
+ p.tyoukaguyahime img {
+  width: 900px;
+ }
+
+ p.ametokimito img {
+  width: 900px;
+ }
+
+ p {
+  text-align: center;
+ }
+
+ .zyuusyo {
+  position: relative;
+  bottom: 13px;
+  font-size: 17px;
+ }
+
+ p.profile img {
+  width: 350px;
+ }
+ 
+ .home {
+  position: relative;
+  top: 10px;
+ }
+
+ table {
+  position: relative;
+  bottom: 10px;
+  font-size: 18px;
+ }
+
+ .syumi {
+  position: relative;
+  bottom: 10px;
+  font-size: 18px;
+ }
+
+ .syumi2 {
+  position: relative;
+  top: 15px;
+ }
+ 
+ 
+
+
+
+
+
+
+ @media screen and (max-width : 767px){
+  img {
+    max-width: 100%;
+  }
+  header,
+  #global_navi,
+  #sidebar,
+  #wrapper{
+    width: 100%;
+  }
+  header h1 {
+    float: none;
+    text-align: center;
+  }
+  header h1 img {
+    width: 50%;
+  }
+  header #header_contact {
+    display: none;
+  }
+  #global_navi ul li {
+    width: 50%;
+    padding: 0.5px;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  #global_navi ul li a {
+    margin: 0%;
+  }
+  #main {
+    width: 100%;
+    padding: 0.5%;
+    box-sizing: border-box;
+  }
+  #main figure {
+    text-align: center;
+  }
+  #main_visual {
+    width: 100%;
+    height: auto;
+  }
+  #point figure {
+    float: none;
+    margin: 0 0 11px 0;
+  }
+  #side_banner ul li {
+    text-align: center;
+    margin: 11px auto;
+  }
+  #side_contact address img {
+    width: 14px;
+    height: 20px;
+  }
+  #entry dl dt {
+    float: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  #entry dl dd {
+    width: 100;
+    margin-left: 0;
+    border-left: none;
+    box-sizing: border-box;
+  }
+  #entry #name, #entry #email, #entry #interest {
+    max-width: 100%;
+  }
+  #entry #detail {
+    width: 100%;
+    box-sizing: border-box;
+  }
+ }
