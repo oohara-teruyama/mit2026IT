@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>CoC 6版 キャラクターシート作成ツール</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" href="C:\Users\r_fujita\Downloads\favicon.ico">
+    <style>
+        body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background-color: #f4f5f7;
+    padding: 20px;
+    padding-top: 60px;
+    color: #333;
+}
+        .container { max-width: 950px;
+             margin: 0 auto;
+            background: #fff;
+            padding: 30px; border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        h1 { text-align: center;
+            color: #222;
+            margin-bottom: 30px; }
+        .section { margin-bottom: 30px;
+            background: #fafafa; padding: 20px; border-radius: 6px;
+            border: 1px solid #e1e4e8; }
+        .section h2 { border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+            color: #222;
+            margin-top: 0;
+            font-size: 20px; }
+        button { background-color: #007bff; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 15px; font-weight: bold; }
+        button:hover { background-color: #0056b3; }
+        .flex-row { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; }
+        .flex-row div { flex: 1; min-width: 120px; }
+        label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 5px; color: #555; }
+        input[type="text"], input[type="number"] { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+        input[readonly] { background-color: #e9ecef; color: #495057; }
+        .dice-result { background: #e2e3e5; padding: 12px; border-radius: 4px; font-weight: bold; margin-bottom: 20px; text-align: center; }
+        
+        /* ステータス・ポイント表示 */
+        .point-container { display: flex; flex-wrap: wrap; gap: 15px; margin: 15px 0; }
+        .point-box { flex: 1; min-width: 160px; background: #e6f7ff; border: 1px solid #91d5ff; padding: 12px; border-radius: 6px; text-align: center; }
+        .point-box.warning { background: #fff1f0; border-color: #ffa39e; }
+        .point-box.warning .points-val { color: #f5222d; }
+        .status-box { flex: 1; min-width: 130px; background: #f6ffed; border: 1px solid #b7eb8f; padding: 12px; border-radius: 6px; text-align: center; }
+        .points-val { font-size: 20px; font-weight: bold; color: #0050b3; }
+        .status-val { font-size: 16px; font-weight: bold; color: #237804; display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 5px; }
+        .status-val input { width: 60px; text-align: center; padding: 4px; }
+
+        /* 技能テーブル */
+        .skill-table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #fff; }
+        .skill-table th, .skill-table td { border: 1px solid #ddd; padding: 8px; text-align: center; font-size: 14px; }
+        .skill-table th { background-color: #f1f3f5; }
+        .skill-table td:nth-child(1) { text-align: left; font-weight: bold; }
+        .skill-input { width: 65px !important; text-align: center; padding: 4px !important; }
+        .total-val { font-weight: bold; color: #2b8a3e; font-size: 16px; }
+        
+        textarea { width: 100%; height: 100px; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; resize: vertical; }
+        a {
+  color: #999;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer {
+  padding: 2rem;
+  font-size: 15px;
+  color: #999;
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+}
+
+.footer a:hover {
+  color: #000;
+}
+.header{
+  height:60px;
+  background:#00DAFC;
+  color:#fff;
+  width:100%;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.header-inner{
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+}
+.logo{
+  margin:0;
+  color: #fff;
+  line-height:50px;
+  float:left;
+}
+.nav{
+  list-style:none;
+  float:left;
+}
+.nav li{display:inline-block;}
+.nav li a{
+  display:inline-block;
+   padding:3px 15px;
+  color:inherit;
+  text-decoration:none;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .md-flex {
+    display: flex;
+  }
+
+  .md-flex li + li {
+    margin-left: 16px;
+  }
+}
+    </style>
+</head>
+<body>
+    <header class="header">
+  <div class="header-inner">
+    <h1 class="logo">　CoC</h1>
+    <ul class="nav">
+      <li ><a href="home.html">HOME</a></li>
+                <li ><a href="asobikata.html">遊び方</a></li>
+                <li><a href="sinkaku.html">神話生物</a></li>
+                <li><a href="kyarasi.html">キャラシ作成</a></li>
+                <li><a href="yougo.html">用語解説</a></li>
+                <li class="current"><a href="douga.html">おすすめ動画</a></li>
+  </div>
+</header>
+
+<div class="container"></div>
+    <h1>CoC キャラクターシート作成ツール</h1>
+
+    <!-- 1. 能力値 -->
+    <div class="section">
+        <h2>1. 能力値</h2>
+        <button onclick="rollAllStats()">能力値を一括で振る</button>
+        <div class="dice-result" id="diceLog">数値を入力するかダイスを振ってください</div>
+        
+        <div class="flex-row">
+            <div><label>STR (筋力)</label><input type="number" id="STR" value="0" onchange="calcStats()"></div>
+            <div><label>CON (体力)</label><input type="number" id="CON" value="0" onchange="calcStats()"></div>
+            <div><label>POW (精神力)</label><input type="number" id="POW" value="0" onchange="calcStats()"></div>
+            <div><label>DEX (敏捷)</label><input type="number" id="DEX" value="0" onchange="calcStats()"></div>
+        </div>
+        <div class="flex-row">
+            <div><label>APP (外見)</label><input type="number" id="APP" value="0" onchange="calcStats()"></div>
+            <div><label>SIZ (体格)</label><input type="number" id="SIZ" value="0" onchange="calcStats()"></div>
+            <div><label>INT (知性)</label><input type="number" id="INT" value="0" onchange="calcStats()"></div>
+            <div><label>EDU (教育)</label><input type="number" id="EDU" value="0" onchange="calcStats()"></div>
+        </div>
+        
+        <div class="flex-row">
+            <div><label>アイデア</label><input type="number" id="Idea" readonly></div>
+            <div><label>幸運</label><input type="number" id="Luck" readonly></div>
+            <div><label>知識</label><input type="number" id="Know" readonly></div>
+        </div>
+    </div>
+
+    <!-- 2. 二次ステータス・技能ポイント -->
+    <div class="section">
+        <h2>2. HP・MP・SAN値・技能ポイント</h2>
+        
+        <div class="point-container">
+            <!-- HP -->
+            <div class="status-box">
+                <div><strong>HP (耐久力)</strong></div>
+                <div class="status-val">
+                    <input type="number" id="currentHP" value="0"> / <span id="maxHP">0</span>
+                </div>
+                <small style="color: #666;">現在値 / 最大値</small>
+            </div>
+            <!-- MP -->
+            <div class="status-box">
+                <div><strong>MP (マジックポイント)</strong></div>
+                <div class="status-val">
+                    <input type="number" id="currentMP" value="0"> / <span id="maxMP">0</span>
+                </div>
+                <small style="color: #666;">現在値 / 最大値</small>
+            </div>
+            <!-- SAN -->
+            <div class="status-box">
+                <div><strong>SAN値 (正気度)</strong></div>
+                <div class="status-val">
+                    <input type="number" id="currentSAN" value="0"> / <span id="maxSAN">0</span>
+                </div>
+                <small style="color: #666;">現在値 / 初期値</small>
+            </div>
+        </div>
+
+        <div class="point-container">
+            <!-- 職業P -->
+            <div class="point-box" id="jobBox">
+                <div><strong>職業技能ポイント</strong></div>
+                <div class="points-val"><span id="jobLeft">0</span> / <span id="jobTotal">0</span></div>
+                <small style="color: #666;">残り / 総数</small>
+            </div>
+            <!-- 興味P -->
+            <div class="point-box" id="hobbyBox">
+                <div><strong>興味技能ポイント</strong></div>
+                <div class="points-val"><span id="hobbyLeft">0</span> / <span id="hobbyTotal">0</span></div>
+                <small style="color: #666;">残り / 総数</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. 技能一覧 -->
+    <div class="section">
+        <h2>3. 技能ポイントの割り振り</h2>
+        <button type="button" onclick="addCustomSkill()">
+  ＋ 自由技能を追加
+</button>
+        <p style="font-size: 12px; color: #666; margin: 0 0 10px 0;">※数値を変更すると、上部の残り技能ポイントと右側の合計値がリアルタイムで自動計算されます。</p>
+        <table class="skill-table">
+            <thead>
+                <tr>
+                    <th>技能名</th>
+                    <th>初期値</th>
+                    <th>職業P</th>
+                    <th>興味P</th>
+                    <th>成長</th>
+                    <th>その他</th>
+                    <th>合計値</th>
+                </tr>
+            </thead>
+            <tbody id="skillTableBody">
+                <!-- JavaScriptで技能一覧を自動生成 -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 4. プロフィール -->
+    <div class="section">
+        <h2>4. プロフィール</h2>
+        <div class="flex-row">
+            <div><label>探索者名</label><input type="text" id="name"></div>
+            <div><label>職業</label><input type="text" id="job"></div>
+            <div><label>年齢</label><input type="number" id="age"></div>
+        </div>
+        <div class="flex-row">
+            <div><label>性別</label><input type="text" id="gender"></div>
+            <div><label>髪の色</label><input type="text" id="hair"></div>
+            <div><label>瞳の色</label><input type="text" id="eye"></div>
+        </div>
+        <div class="flex-row">
+            <div><label>現住所</label><input type="text" id="address"></div>
+            <div><label>出身国/学校</label><input type="text" id="birth"></div>
+        </div>
+    </div>
+
+    <!-- 5. メモ -->
+    <div class="section">
+        <h2>5. 設定・メモ</h2>
+        <textarea id="memo" placeholder="バックストーリー、武器・所持品、遭遇した神話生物などを入力"></textarea>
+    </div>
+</div>
+
+<script>
+    const defaultSkills = [
+        { name: "目星", base: 25 },
+        { name: "聞き耳", base: 25 },
+        { name: "図書館", base: 25 },
+        { name: "心理学", base: 5 },
+        { name: "言いくるめ", base: 5 },
+        { name: "信用", base: 15 },
+        { name: "説得", base: 15 },
+        { name: "値切り", base: 5 },
+        { name: "医学", base: 5 },
+        { name: "応急手当", base: 30 },
+        { name: "オカルト", base: 5 },
+        { name: "隠れる", base: 10 },
+        { name: "忍び歩き", base: 10 },
+        { name: "写真術", base: 10 },
+        { name: "精神分析", base: 1 },
+        { name: "追跡", base: 10 },
+        { name: "登攀", base: 40 },
+        { name: "ナビゲート", base: 10 },
+        { name: "変装", base: 1 },
+        { name: "法律", base: 5 },
+        { name: "歴史", base: 20 },
+        { name: "クトゥルフ神話", base: 0 },
+        { name: "回避", base: "DEX*2" },
+        { name: "キック", base: 25 },
+        { name: "こぶし（パンチ）", base: 50 },
+        { name: "組み付き", base: 25 }
+    ];
+let customSkillCount = 0;
+
+function addCustomSkill() {
+    const tbody = document.getElementById('skillTableBody');
+
+    const index = defaultSkills.length + customSkillCount;
+
+    const tr = document.createElement('tr');
+
+    tr.innerHTML = `
+        <td>
+            <input type="text"
+                   id="custom_name_${index}"
+                   placeholder="技能名"
+                   style="width:140px;">
+        </td>
+
+        <td>
+            <input type="number"
+                   id="base_${index}"
+                   value="0"
+                   class="skill-input"
+                   onchange="calcTotalScore(${index})">
+        </td>
+
+        <td>
+            <input type="number"
+                   id="job_${index}"
+                   class="skill-input"
+                   value="0"
+                   min="0"
+                   onchange="calcTotalScore(${index})">
+        </td>
+
+        <td>
+            <input type="number"
+                   id="hobby_${index}"
+                   class="skill-input"
+                   value="0"
+                   min="0"
+                   onchange="calcTotalScore(${index})">
+        </td>
+
+        <td>
+            <input type="number"
+                   id="grow_${index}"
+                   class="skill-input"
+                   value="0"
+                   min="0"
+                   onchange="calcTotalScore(${index})">
+        </td>
+
+        <td>
+            <input type="number"
+                   id="other_${index}"
+                   class="skill-input"
+                   value="0"
+                   onchange="calcTotalScore(${index})">
+        </td>
+
+        <td id="total_${index}" class="total-val">0</td>
+    `;
+
+    tbody.appendChild(tr);
+
+    customSkillCount++;
+}
+    window.onload = function() {
+        renderSkills();
+        calcStats(true);
+    };
+
+    function renderSkills() {
+        const tbody = document.getElementById('skillTableBody');
+        tbody.innerHTML = "";
+        
+        defaultSkills.forEach((skill, index) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${skill.name}</td>
+                <td id="base_${index}">${skill.base}</td>
+                <td><input type="number" id="job_${index}" class="skill-input" value="0" min="0" onchange="calcTotalScore(${index})"></td>
+                <td><input type="number" id="hobby_${index}" class="skill-input" value="0" min="0" onchange="calcTotalScore(${index})"></td>
+                <td><input type="number" id="grow_${index}" class="skill-input" value="0" min="0" onchange="calcTotalScore(${index})"></td>
+                <td><input type="number" id="other_${index}" class="skill-input" value="0" onchange="calcTotalScore(${index})"></td>
+                <td id="total_${index}" class="total-val">0</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    function roll3d6() { return Math.floor(Math.random() * 6) + Math.floor(Math.random() * 6) + Math.floor(Math.random() * 6) + 3; }
+    function roll2d6Plus6() { return Math.floor(Math.random() * 6) + Math.floor(Math.random() * 6) + 8; }
+
+    function rollAllStats() {
+        document.getElementById('STR').value = roll3d6();
+        document.getElementById('CON').value = roll3d6();
+        document.getElementById('POW').value = roll3d6();
+        document.getElementById('DEX').value = roll3d6();
+        document.getElementById('APP').value = roll3d6();
+        document.getElementById('SIZ').value = roll2d6Plus6();
+        document.getElementById('INT').value = roll2d6Plus6();
+        document.getElementById('EDU').value = roll2d6Plus6();
+
+        document.getElementById('diceLog').innerText = "ダイスを元に全ステータスを更新しました！";
+        calcStats(true);
+    }
+
+    function calcStats(syncCurrent = false) {
+        let STR = parseInt(document.getElementById('STR').value) || 0;
+        let CON = parseInt(document.getElementById('CON').value) || 0;
+        let POW = parseInt(document.getElementById('POW').value) || 0;
+        let DEX = parseInt(document.getElementById('DEX').value) || 0;
+        let SIZ = parseInt(document.getElementById('SIZ').value) || 0;
+        let INT = parseInt(document.getElementById('INT').value) || 0;
+        let EDU = parseInt(document.getElementById('EDU').value) || 0;
+
+        document.getElementById('Idea').value = INT * 5;
+        document.getElementById('Luck').value = POW * 5;
+        document.getElementById('Know').value = EDU * 5;
+
+        let maxHP = Math.ceil((CON + SIZ) / 2);
+        let maxMP = POW;
+        let maxSAN = POW * 5;
+
+        document.getElementById('maxHP').innerText = maxHP;
+        document.getElementById('maxMP').innerText = maxMP;
+        document.getElementById('maxSAN').innerText = maxSAN;
+
+        if (syncCurrent) {
+            document.getElementById('currentHP').value = maxHP;
+            document.getElementById('currentMP').value = maxMP;
+            document.getElementById('currentSAN').value = maxSAN;
+        }
+
+        defaultSkills.forEach((skill, index) => {
+            if(skill.name === "回避") {
+                document.getElementById(`base_${index}`).innerText = DEX * 2;
+            }
+            calcTotalScore(index);
+        });
+
+        updatePoints();
+    }
+
+    function calcTotalScore(index) {
+        let base = parseInt(document.getElementById(`base_${index}`).innerText) || 0;
+        let job = parseInt(document.getElementById(`job_${index}`).value) || 0;
+        let hobby = parseInt(document.getElementById(`hobby_${index}`).value) || 0;
+        let grow = parseInt(document.getElementById(`grow_${index}`).value) || 0;
+        let other = parseInt(document.getElementById(`other_${index}`).value) || 0;
+        
+        document.getElementById(`total_${index}`).innerText = base + job + hobby + grow + other;
+        updatePoints();
+    }
+
+    function updatePoints() {
+        let INT = parseInt(document.getElementById('INT').value) || 0;
+        let EDU = parseInt(document.getElementById('EDU').value) || 0;
+
+        let totalJobPoints = EDU * 20;
+        let totalHobbyPoints = INT * 10;
+
+        let usedJob = 0;
+        let usedHobby = 0;
+
+        const allJobInputs = document.querySelectorAll('[id^="job_"]');
+const allHobbyInputs = document.querySelectorAll('[id^="hobby_"]');
+
+allJobInputs.forEach(input => {
+    usedJob += parseInt(input.value) || 0;
+});
+
+allHobbyInputs.forEach(input => {
+    usedHobby += parseInt(input.value) || 0;
+});
+
+        let jobLeft = totalJobPoints - usedJob;
+        let hobbyLeft = totalHobbyPoints - usedHobby;
+
+        document.getElementById('jobTotal').innerText = totalJobPoints;
+        document.getElementById('jobLeft').innerText = jobLeft;
+        document.getElementById('hobbyTotal').innerText = totalHobbyPoints;
+        document.getElementById('hobbyLeft').innerText = hobbyLeft;
+
+        const jobBox = document.getElementById('jobBox');
+        if (jobLeft < 0) jobBox.classList.add('warning');
+        else jobBox.classList.remove('warning');
+
+        const hobbyBox = document.getElementById('hobbyBox');
+        if (hobbyLeft < 0) hobbyBox.classList.add('warning');
+        else hobbyBox.classList.remove('warning');
+    }
+</script>
+<footer class="footer">
+  <ul class="md-flex">
+   <li><a href="home.html">HOME</a></li>
+                <li><a href="asobikata.html">遊び方</a></li>
+                <li><a href="sinkaku.html">神話生物</a></li>
+                <li><a href="kyarasi.html">キャラシ作成</a></li>
+                <li><a href="yougo.html">用語解説</a></li>
+  </ul>
+  <p class="copyright">クトゥルフ神話TRPG初心者向けガイド</p>
+</footer>
+</body>
+</html>

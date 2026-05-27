@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>クトゥルフ神話TRPG</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" href="C:\Users\r_fujita\Downloads\favicon.ico">
+       <style>
+        a {
+  color: #999;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer {
+  padding: 2rem;
+  font-size: 15px;
+  color: #999;
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+}
+
+.footer a:hover {
+  color: #000;
+}
+.header{
+  height:60px;
+  background:#00DAFC;
+  color:#fff;
+  width:100%;
+}
+.logo{
+  margin:0;
+  line-height:50px;
+  float:left;
+}
+.nav{
+  list-style:none;
+  float:left;
+}
+.nav li{display:inline-block;}
+.nav li a{
+  display:inline-block;
+   padding:3px 15px;
+  color:inherit;
+  text-decoration:none;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .md-flex {
+    display: flex;
+  }
+
+  .md-flex li + li {
+    margin-left: 16px;
+  }
+}
+       </style>
+    </head>
+    <body>
+
+        <!--ヘッダー-->
+        <header class="header">
+  <div class="container">
+    <h1 class="logo">　CoC</h1>
+    <ul class="nav">
+      <li ><a href="home.html">HOME</a></li>
+                <li ><a href="asobikata.html">遊び方</a></li>
+                <li><a href="sinkaku.html">神話生物</a></li>
+                <li><a href="kyarasi.html">キャラシ作成</a></li>
+                <li><a href="yougo.html">用語解説</a></li>
+                <li class="current"><a href="douga.html">おすすめ動画</a></li>
+  </div>
+</header>
+        <!--/ヘッダー-->
+
+        <!--wrapper-->
+        <div id="wrapper">
+            <!--メイン-->
+        <div id="main">
+        <div id="breadcrumb">
+            <ol>
+                <li><a href="index.html">HOME</a></li>
+                <li>遊び方</li>
+            </ol>
+        </div>
+        <section>
+            <h1>クトゥルフ神話TRPGの遊び方</h1>
+        </section>
+         <section>
+            <p>遊んでみたい！少し興味が出てきた。という方に向けて簡単に遊び方の説明を説明します。ただ遊ぶ卓によってハウスルール等があったりもするため
+                これが正解みたいなわけではないためその都度柔軟に対応していただきたいです。</p>
+         </section>
+         <table>
+        <p>※TRPGの用語等は<a href="yougo.html">用語解説</a>にて説明しているためそちらを見ていただけると幸いです。</p>
+        <h2>ステップ1</h2>
+        <p>まずは人を集め、回したいシナリオを決めましょう。TRPGにはKPレスと呼ばれているシナリオと普通のシナリオの2種類があります。
+            KPレスのシナリオは一人で回すことが可能ですが通常のシナリオはPLとKPに分かれて行うため最低でも二人は人が必要になってきます。
+        最低二人かじゃあどのぐらい集めればいいんだろうと思った方もいるかもしれません。結論としては"回したいシナリオによる"です。
+        例えばタイマンシナリオなら二人でしかできませんし、3PL固定というシナリオならKPとPL合わせて4人必要、推奨人数2~4人ならあくまでこの人数で遊ぶことを推奨しますよというだけなので極論PL10人でも1人でもいいです。
+        じゃあ人多ければいいのかよって思ったかた、そうでもないです。基本的に人が多くなればなるほどシナリオの難易度は下がります。そしてタイマンシナリオを除いて複数PLで回すシナリオでは、
+        体感3~5PLが推奨のシナリオが多いですそのためKP含め5 6人ぐらい集まると安心だと思います。</p>
+
+        <h2>ステップ2</h2>
+        次に環境を用意しましょう。オフラインならばTRPGではダイスを振って判定を決めるためダイス、マップがないとわかりずらいためそのシナリオに出てくる主要な物のマップの用意、今どこにいるかをわかりやすくするためのピンやマーカーのようなもの。
+        自分の分身となるキャラシそしてわからないルールなどがあったときに調べるためのルールブック。これらすべてを用意する必要があります。オンラインであれば基本的には、
+        ココフォリアというサイトを使うことになるのでそのサイトの準備、KPはそのサイトでシナリオを回す際に使う部屋を作りその中に保存したマップなどを用意しておきます。
+        また、今回はCoCの前提で話を進めているためココフォリア内のダイスの設定を初期のダイスボットから6版ならクトゥルフ神話7版なら新クトゥルフ神話に変更をしましょう。
+        PLの方は次のステップで紹介するいあきゃらというサイトでPCを作り作ったPCをチャパレ出力のココフォリアコマ出力でココフォリア内に張り付けましょう。
+
+        <h2>ステップ3</h2>
+        <p>PCを作りましょう。PCを作る際まずはステータスを決めましょう。WEB上ならいあきゃらという1ボタンでステータスを振り分けてくれるサイトがあるためそちらを使っていただくのが一番簡単だと思いますが、
+            紙で作る際はしっかりとルールブックを見て指定されたダイスを振ってステータスを決めます。例えばSTRなら3d6を振り出た値がそのキャラのSTRとなります。また、技能値という物がありそのキャラがどれだけそのことをうまくできるかという指標となるものです。
+            基本的には1~100まであり技能ごとに初期値も違います。例に出すとこぶしは初期値が50もあるのに対して鍵開けは1しかありません。成功失敗の判定はどうするの？って思った方に説明をすると1d100を振り出た値が自分の成功地より低ければ成功となります。
+            また職業によってとれる職業技能が異なります例えば探偵なら言いくるめ・鍵開け・写真術・心理学・図書館・値切り・法律・個人的、時代的な技能を1つ（自由枠）この中から選択して職業技能の技能ポイントを振り分けることになります。
+            興味ポイントは基本的には自由で例えば自分警察だけど料理が趣味ってことにして制作料理を取ろうかなみたいに無理のない範囲でなら好きにとることができます。
+            そして技能ポイントを振る際に重要なこととしてクトゥルフ神話には1ポイントも振ってはいけません。なんで？と思った方もいると思うのですが、クトゥルフ神話技能は神話的事象に巻き込まれた際や、
+            神話生物を見た際にもらえるもので最初から獲得することはできません。そして技能の最高は99で100にすることはできません理由としては絶対に失敗しない人間というのは存在しないため確定成功にならないようにするためです。
+            最後にシナリオによってはHOによって年齢が決められていたり、職業が固定になっているものもあります。そのためHOありならばしっかりと自分のHOを読みそのHOにあったPCを作ることが重要となります。
+        </p>
+        </table>
+        </section>
+        </div>
+        <!--/メイン-->
+
+        <!--サイド-->
+        <aside id="sidebar">
+            <section id="side_banner">
+                <h2>紹介しているサイト様</h2>
+                <ul>
+                    <li><a href="https://ccfolia.com/" target="_blank"><img src="images/ccfolia.png"></a></li>
+                    <li><a href="https://iachara.com/" target="_blank"><img src="images/iakyara.png"></a></li>
+                    <li><a href="https://booth.pm/ja" target="_blank"><img src="images/booth.png"></a></li>
+                </ul>
+             </section>
+        </aside>
+        <!--/サイド-->
+        </div>
+        <!--/wrapper-->
+
+        <!--フッター-->
+        <footer class="footer">
+  <ul class="md-flex">
+   <li><a href="home.html">HOME</a></li>
+                <li><a href="asobikata.html">遊び方</a></li>
+                <li><a href="sinkaku.html">神話生物</a></li>
+                <li><a href="kyarasi.html">キャラシ作成</a></li>
+                <li><a href="yougo.html">用語解説</a></li>
+  </ul>
+  <p class="copyright">クトゥルフ神話TRPG初心者向けガイド</p>
+</footer>
+        <!--/フッター-->
+    </body>
+    </html>
