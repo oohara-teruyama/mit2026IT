@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>マイプロフィール</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>   
+        
+    <!-- ヘッダー -->
+     <header>
+       <h1><a href="index.html"><img src="images/logo.jpg" alt="マイプロフィール"></a>マイプロフィール</h1>
+       <nav id="global_navi">
+        <ul>
+            <li><a href="index.html">トップページ</a></li>
+            <li><a href="myhistry.html">歩み</a></li>
+            <li><a href="gallery.html">趣味箱</a></li>
+            <li class="current"><a href="proglam.html">プログラミング</a></li>
+            <li><a href="other.html">その他</a></li>
+        </ul>
+       </nav>
+     </header>
+     <!-- /ヘッダー -->
+
+     <!-- wrapper -->
+      <div id="wrapper">
+        <!-- メイン -->
+         <div id="main">
+         <div id="breadcrumb">
+            <ol>
+                <li><a href="index.html">トップページ</a></li>
+                <li>プログラミング</li>
+            </ol>
+         </div>
+         <article>
+            <h1>プログラミング</h1>
+            <p>私が作っているカーナビゲーションシステムのプログラムのご紹介</p>
+            <section>
+                <h2>基本情報</h2>
+                <section id="proglam">
+                    <h3>プログラムを作りたくなった経緯</h3>
+                    <p>私の父の乗っている自動車に搭載のカーナビゲーションシステムに心奪われて自宅でも遊べるようにしたいと思いスクラッチで作成を開始。</p>
+                    <p>2022年の夏に試作版として東名高速の地図データのみを搭載したものを公開。</p>
+                    <figure>
+                        <img src="images/shisakuhin_pic.png" alt="試作版">
+                        <figcaption>現在公開中の東名高速版の画像</figcaption>
+                    </figure>
+                </section>
+                <section id="proglam">
+                    <h3>現在行っていること</h3>
+                    <p>試作版から全国版に範囲を広げるためにブロックによる地図データ制御からリストによる地図データ制御に変更。<br>
+                        それによりプログラム自体のデータの軽量化に成功。かつ膨大なデータの処理にも成功。</p>
+                    <figure>
+                        <img src="images/hikaku.jpg" alt="試作版との比較">
+                        <figcaption>試作版（左）と製作中の全国版（右）<br>    
+                        ブロック制御だったのに対しリストから読み込む制御に進化。</figcaption>
+                    </figure>
+                    <h2></h2>
+                    <p>さらにナビ動作の要である自動車側の操作を3種類のキーを使い一定速度の加速・減速のみの簡素な物からアクセルペダル、ブレーキペダルが実装、細かな加減速の調整が可能になるよう大幅な変更を施した。<br>
+                        アクセルの踏み込みは6段階、ブレーキの踏み込みは9段階になりより本格的な運転を実現。<br>
+                        さらにシフトレバーや燃料計等が実装。シフトレバーは実際の動きと同じような動きをし、燃料計は走行環境に応じて減少。</p>
+                    <figure>
+                        <img src="images/tripcomputer.png" alt="トリップコンピューター">
+                        <figcaption>全国版で新しく作られた車側の環境画面</figcaption>
+                    </figure>
+                    <h2></h2>
+                    <p>また今作は新しく本物そっくりのメニュー画面が実装。<br>
+                        より本物に近い機能と動きを兼ね備えたプログラムに進化。</p>
+                    <figure>
+                        <img src="images/zisakumenu.jpg" alt="メニュー比較">
+                        <figcaption>スクラッチ上で表示させたメニュー画面（右）と実物で表示させたメニュー画面（左）<br>
+                        スクラッチ版では項目が減っているが再現しきれない、要らない項目は消してあります</figcaption>
+                    </figure>
+                    <h2></h2>
+                    <p>現在は地図データの書き込みは完全に完了。接続道路の認識も正確なものになり今は休憩施設の施設情報を書き込んでいる。<br>
+                        なお完璧に完成して公開するのはまだ先になりそうだ。</p>
+                    <figure>
+                        <img src="images/excel.png" alt="入力中の地図データの一部">
+                        <figcaption>現在制作中の地図データの一部</figcaption>
+                    </figure>
+                </section>
+            </section>
+            <section>
+                <h2>公開中の試作品のプログラム</h2>
+                <p>※スマートフォンからの操作は非対応です。予めご了承ください。</p>
+                <iframe src="https://scratch.mit.edu/projects/722411915/embed" allowtransparency="true" width="700" height="610" frameborder="0" scrolling="no" allowfullscreen></iframe>
+                <section>
+                <h3>操作方法</h3>
+                <p>全てキーボードによる操作に依存します。</p>
+                <p>① 緑色の旗を押すと開始されます。<br>
+                   ② 鍵穴が表示されるので4キーを長押ししてエンジンをかけましょう。<br>
+                   ③ ホンダナビゲーションが表示された後選択画面が出てくるので黄色い枠（以降「カーソル」と表記）を右に動かしましょう。<br>
+                   ※カーソルの動かし方について<br>
+                   カーソルを動かすにはJキーの周りのキー（U,I,K,M,N,H）に割り当てられています。6つのキーのどれかを最初に押し、カーソルを回したい方向に順番に押すことで回ります。<br>
+                   ※右回り（時計回り）に動かす際に押す順番の例：I→K→M→N→H→U→I→K…<br>
+                   ※左回り（反時計回り）に動かす際に押す順番の例：I→U→H→N→M→K→I→U…<br>
+                   ④ カーソルを「ICリストから」に合わせたらJキーを押して決定します。※それ以外の項目で決定を押しても先には進みません。ご了承ください。<br>
+                   ⑤ 画面が進んだらカーソルを「路線リストから」に合わせ、Jキー（以降「決定」と表記）を押します。※もう片方を選択しても先には進みません。ご了承ください。<br>
+                   ⑥ 選択肢が「東名高速」しかないのでそのまま決定します。<br>
+                   ⑦ カーソルを動かし、好きな施設に合わせ、決定を押します。<br>
+                   ⑧ 上下線が選択できるので好きな方向にカーソルを合わせ、決定を押します。<br>
+                   ⑨ 高速ガイドが表示されます。</p>
+                </section>
+                <section>
+                    <h3>高速ガイド表示後の操作方法</h3>
+                    <p>この後は3種類のキーしか押しません。</p>
+                    <p>スペースキーで加速<br>
+                        Vキーで減速<br>
+                        Cキーで速度が固定されます</p>
+                    <p>ただ、どこかのキーを押すと40km/hになるとかならないとか…w</p>
+                    <p>ちなみにＡキーを押すと天気情報が表示されるとか<br>
+                        ※ここで表示される気象情報は2021年7月から2022年6月までの気象庁のデータを参照にしており、実際の気象情報とは異なります。</p>
+                </section>
+                <section>
+                    <h3>正しい終わらせ方</h3>
+                    <p>まぁ画面左上の赤いボタンを押せば終わるには終わるけどｗ<br>
+                        一応正しい終わらせ方もあるから教えます。</p>
+                    <p>① <ul>
+                            <li>手前の施設が「ＰＡ」「ＳＡ」を示していること</li>
+                            <li>その施設の残り距離が「施設付近」と表示されていること</li>
+                            <li>時計の隣にあるデジタルスピードメーターが「０」を示していること</li>
+                        </ul>
+                        この3つの条件が重なることで実行ができます。<br>
+                       ② ①の条件が全て揃った状態で5キーを押す。※全て揃っていない場合メッセージが表示されます。<br>
+                       ③ 鍵が表示されるので1キーを押して鍵を0の位置に合わせる<br>
+                       ④ 自動的にプログラムが終了します。</p>
+                </section>
+                <section>
+                    <h3>軽く宣伝</h3>
+                    <p>公式サイトなら大画面で遊ぶこともできます。<a href="https://scratch.mit.edu/projects/722411915">こちら</a>からアクセス！</p>
+                </section>
+            </section>
+            <section id="proglam">
+                <h2>参考にしたカーナビゲーションシステムの画像</h2>
+                <figure>
+                    <img src="images/edix.jpg" alt="エディックスの中">
+                    <figcaption>エディックスの内装<br>
+                    ホンダ エディックス（2004-2009）</figcaption>
+                </figure>
+            </section>
+         </article>
+         </div>
+         <!-- /メイン -->
+
+         <!-- サイド -->
+          <aside id="sidebar">
+            <section id="side_banner">
+                <h2>かんたんアクセス</h2>
+                <ul>
+                    <p>▼<a href="https://www.instagram.com/yacchan132109?igsh=anc1dTNvNmpwbDI1" target="_blank">instagramページ</a>▼</p>
+                    <li><img src="images/instagramQR.png" alt="instagramページ"></a></li>
+                    <li><a href="https://x.com/hddhaiweimode" target="_blank"><img src="images/X_banner.jpg" alt="x(旧Twitter)のページ"></a></li>
+                    <li><a href="https://scratch.mit.edu/users/yappy15/" target="_blank"><img src="images/scratch_banner.jpg" alt="scratchのページ"></a></li>    
+                </ul>
+            </section>
+          </aside>
+         <!-- /サイド -->
+      </div>
+      <!-- /wrapper -->
+
+      <!-- フッター -->
+       <footer>
+        <div id="footer_nav">
+            <ul>
+                <li><a href="index.html">トップページ</a>・</li>
+                <li><a href="myhistry.html">歩み</a>・</li>
+                <li><a href="gallery.html">趣味箱</a>・</li>
+                <li><a href="proglam.html">プログラミング</a>・</li>
+                <li><a href="other.html">その他</a></li>
+            </ul>
+        </div>
+       </footer>
+       <!-- /フッター -->    
+    </body>
+</html>
