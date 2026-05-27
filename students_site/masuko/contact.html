@@ -1,0 +1,97 @@
+  
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>フラワーアレンジメント教室　Bloom</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+ <body>
+
+<!--ヘッダー-->
+<header>
+    <h1><a href="index.html"><img src="images/logo.png" alt="フラワーアレンジメント教室ブルーム"></a></h1>
+    <div id="header_contact"><a href="contact.html"><img src="images/btn_contact.jpg" alt="お問い合わせ"></a></div>
+    <nav id="global_navi">
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="course.html">好きな映画</a></li>
+            <li><a href="gallery.html">好きなゲーム</a></li>
+         </ul>
+    </nav>
+    </header>
+    <!--/ヘッダー-->
+    <!--wrapper-->
+    <div id="wrapper">
+    <!--/メイン-->
+    <div id="main">
+         <div id="breadcrumb">
+        <ol>
+            <li><a href="index.html">HOME</a></li>
+            <li>お問い合わせ</li>
+         </ol>
+        </div>
+       
+            <h2>お問い合わせフォーム</h2>
+            <form id="entry">
+                <dl>
+                   <dt>お名前 <samp class="must">※</span></dt>
+                 <dd><input type="text" name="name" id="name" required></dd>
+                   <dt>メールアドレス　<span class="must">※</span></dt>
+                   <dd><input type="email" name="email" readonlyc></dd>
+                    <dt>興味のある講座</dt>
+                    <dd>
+                        <select name="interest" id="interest">
+                            <option value="1day体験教室">1day体験教室</option>
+                            <option value="プライダル・アートフラワー教室">プライダル・アートフラワー教室</option>
+                            <option value="資格取得講座">資格取得講座</option>
+                        </select>
+                    </dd>
+                    <dt>お問い合わせ種別</dt>
+                    <dd>
+                        <label><input type="checkbox" name="category" id="category1" value="講座申し込み">講座申し込み</label>
+                        <label><input type="checkbox" name="category" id="category2" value="資料請求">資料請求</label>
+                        <label><input type="checkbox" name="category" id="category3" value="その他お問い合わせ">その他お問い合わせ</label>
+                    </dd>
+                    <dt>Bloomを知ったきっかけ</dt>
+                    <dd>
+                        <label><input type="radio" name="questionnaire" id="questionnaire1" value="口コミ">口コミ</label>
+                        <label><input type="radio" name="questionnaire" id="questionnaire2" value="検索エンジンから">検索エンジンから</label>
+                        <label><input type="radio" name="questionnaire" id="questionnaire3" value="その他">その他</label>
+                    <dt>お問い合わせ内容</dt>
+                    <dd>
+                        <textarea name="detail" id="detail"></textarea>
+                    </dd>
+                </dl>
+                    <p id="submit_button_cover">
+                        <input type="submit" id="submit_button" value="送信する">
+                    </p>
+                    </form>
+                
+                </div>
+                 <!--サイド-->
+                <aside id="sidebar">
+                    <section id="side_banner">
+                    </section>
+                    <section id="side_contact">
+            </section>
+        </aside>
+        <!--サイド-->
+        </div>
+    <!--/wrapper-->
+
+    <!--フッタ-->
+    <footer>
+        <div id="footer_nav">
+            <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="course.html">好きな映画</a></li>
+            <li><a href="gallery.html">好きなゲーム</a></li>
+        </ul>
+        </div>
+        <small>&copy; 2026 Blooom.</small>
+    </footer>
+<!--/フッタ-->
+
+    </body>
+</html>
