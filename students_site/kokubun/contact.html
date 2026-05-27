@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>フラワーアレンジメント教室 Bloom</title>
+        <link rel="stylesheet"href="css/style.css">
+    </head>
+    <body>
+ 
+        <!--ヘッダー-->
+        <header>
+              <h1><a href="index.html"><img src="images/logo.png" alt="フラワーアレンジメント教室ブルーム"></a></h1>
+            <nav id="global_navi">
+                <ul>
+                    <li class="current"><a href="index.html">HOME</a></li>
+                    <li><a href="gallery.html">ギャラリー</a></li> 
+                </ul>
+            </nav>
+        </header>
+        <!--/ヘッダー-->
+
+<!--メインビジュアル画像-->
+        <!--wrapper-->
+        <div id="wrapper">
+            <!--メイン-->
+            <div id="main">
+              <div id="breadcrumb">
+                <ol><a href="index.html">HOME</a></ol>
+                <ol>お問い合わせ</ol>
+                    
+              </div> 
+                        <section>
+    <h2>お問い合わせフォーム</h2>
+    <form id="entry">
+    <dl>
+    <dt>お名前 <span class="must">※</span></dt>
+    <dd><input type="text" name="name" id="name" required></dd>
+    <dt>メールアドレス <span class="must"></span>※</dt>
+    <dd><input type="email" name="email" id="email" required></dd>
+    <dt>興味のある講座</dt>
+    <dd>
+        <select name="interest" id="interest">
+            <option value="1day体験教室">1day体験教室</option>
+            <option value="ブライダル・アートフラワー教室">ブライダル・アートフラワー教室</option>
+            <option value="資格習得講座">資格習得講座</option>
+        </select>  
+    </dd>
+     <dt>お問い合わせ種別</dt>
+     <dd>
+        <label><input type="checkbox" name="category" id="category1" value="講座申し込み">講座申し込み</label>
+        <label><input type="checkbox" name="category" id="category2" value="資料請求">資料請求</label>
+        <label><input type="checkbox" name="category3" value="その他お問い合わせ">その他お問い合わせ</label>
+     </dd>
+    <dt>Bloomを知ったきっかけ</dt>
+    <dd>
+        <label><input type="radio" name="questionnaire" id="questionnaire1" value="口コミ">口コミ</label>
+        <label><input type="radio" name="questionnaire" id="questionnaire2" value="検索エンジンから">検索エンジンから</label>
+        <label><input type="radio" name="questionnaire" id="questionnaire3" value="その他">その他</label>
+    </dd>
+    <dt>お問い合わせ内容</dt>
+    <dd>
+        <textarea name="detail" id="detail"></textarea>
+    </dd>
+    <p id="submit_button_cover">
+        <input type="submit" id="submit_button" value="送信する">
+    </p>
+    </dl>
+    </form>
+    </section>
+
+              </article> 
+            
+            <!--メイン-->
+        </div>
+<!--サイド-->
+<!--サイド-->
+        <aside id="sidebar">
+            <section id="side_banner">
+                <h2>関連リンク</h2>
+                <ul>
+                    <li><a href="#" target="_blank"><img src="images/banner01.jpg" alt="ブルームブログ"></a></li>
+                    <li><a href="https://www.fecebook.com/" target="_blank"><img src="images/banner02.jpg" alt="イイネ!押してね!facebookページ"></a></li>
+                </ul>
+            </section>
+            <section id="side_contact">
+                <h2>ご予約・お問い合わせ</h2>
+                <address><img src="images/mark_tel.png" alt="mark_tel">052-232-8229</address>
+                <p>受付時間 9:00～18:00</p>
+                <p><a href="cntact.htlm" class="contact_button">お問い合わせフォーム</a></p>
+            </section>
+        </aside>
+        </div>
+        <!--サイド-->
+        <!--サイド-->
+
+        <!--/warpper-->
+
+        <!--フッター-->
+        <footer>
+            <div id="footer_nav">
+            <ul>
+       <li><a href="index.html">HOME</a></li> 
+       <li><a href="gallery.ht,l">ギャラリー</a></li> 
+            </ul>
+            </div>
+        </footer>
+        <!--/フッター-->
+
+    </body>
+</html>
