@@ -1,0 +1,280 @@
+@charset "utf-8";
+
+body {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 150px;
+  background-image: url("windows-xp.jpg");
+  background-size: cover;
+  color: #ffffff;
+}
+a { color: white; }
+a:hover {
+  font-weight: bold;
+  text-decoration: none;
+}
+a img { transition: opacity 0.2s linear; }
+a:hover img { opacity: 0.7; }
+h1, h2, h3, h4, h5, h6 { margin-top: 0;}
+p {
+  margin-top: 0;
+  line-height: 1.6;
+}
+img { vertical-align: bottom; }
+#main h1 {
+  padding: 30px 30px 30px 20px;
+  font-size: 30px;
+  border-bottom: solid 3px #ffffff;
+}
+#main h2 {
+  font-size: 22px;
+  border-bottom: solid 2px white;
+  display: inline-block;
+}
+#main h3 {
+  font-size: 18px;
+  border-left: 3px solid #ffffff;
+  padding: 4px 9px 4px 14px;
+}
+header {
+  width: 1200px;
+  margin: 0 auto;
+}
+header li {
+  border: 3px solid white;
+}
+header h1 {
+  float: left;
+  margin: 5px 0 10px;
+}
+#global_navi {
+  max-width: 1200;
+  width: 100%;
+  clear: both;
+  overflow: hidden;
+  margin: 16px auto;
+}
+#global_navi ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#global_navi ul li {
+  width: 295px;
+  float: left;
+  text-align: center;
+}
+#global_navi ul li a {
+  display: block;
+  padding: 16px;
+  background-color: rgba(0, 0, 255, 0.5);
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.2s linear;
+}
+#global_navi ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  color:blue
+}
+#wrapper {
+  width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 255, 0.5);
+}
+#main {
+  width: 950px;
+  float: left;
+  font-size: 18px;
+}
+#sidebar {
+  width: 230px;
+  float: right;
+}
+footer {
+  width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+footer #footer_nav {
+  background-color: rgba(0, 0, 255, 0.5);
+  color: white;
+  padding: 10px;
+}
+footer #footer_nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+footer #footer_nav li {
+  display: inline;
+  border-left: solid 1px #ffffff;
+  margin-left: 8px;
+  padding-left: 8px;
+  font-size: smaller;
+}
+footer #footer_nav li:last-child {
+  border-right: solid 1px #ffffff;
+  padding-left: 0 8px;
+}
+footer small {
+  display: block;
+  padding: 8px 0;
+  text-align: right;
+  color: #fff;
+}
+#point { margin-bottom: 36px; }
+#point section {
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+#point figure {
+  float: right;
+  margin: 0 0 0 16px;
+}
+#point figcaption {
+  font-size: 12px;
+  color: white;
+  text-align: center;
+}
+#gallery {
+  width: 100%;
+}
+#gallery ul {
+  list-style: none;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+#gallery ul li {
+  width: calc(50% - 10px);
+}
+#gallery ul li img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.gallery_page #main {
+  width: 100%;
+}
+.gallery_page #sidebar {
+  display: none;
+}
+#entry dl {
+  background: blue;
+  border: 1px solid #ffffff;
+  border-top: 0;
+}
+#entry dl dt,
+#entry dl dd {
+  padding: 10px;
+  border-top: 1px solid #ffffff;
+}
+#entry dl dt {
+  width: 13em;
+  float: left;
+  clear: both;
+  font-weight: bold;
+}
+#entry dl dd {
+  background-color: #fff;
+  border-left: 1px solid #ddd;
+  margin-left: 13em;
+}
+#submit_button {
+  background-color: blue;
+  color: white;
+  float: right;
+}
+.must { color: #f00; }
+#entry #name {
+  width: 15em;
+  padding: 3px;
+}
+#entry #email {
+  width: 25em;
+  padding: 3px;
+}
+#entry #category2,
+#entry #category3,
+#entry #questionnarire2,
+#entry #questionnarire3 {
+  margin-left: 15px;
+}
+#entry #detail {
+  width: 36em;
+  height: 15em;
+}
+@media screen and (max-width : 767px){
+  img {
+    max-width: 100%;
+  }
+  header,
+  #global_navi,
+  #sidebar,
+  #wrapper{
+    width: 100%;
+  }
+  header h1 {
+    float: none;
+    text-align: center;
+  }
+  header h1 img {
+    width: 50%;
+  }
+  header #header_contact {
+    display: none;
+  }
+  #global_navi {
+    font-size: 48px;
+  }
+  #global_navi ul li {
+    width: 50%;
+    padding: 0.5px;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  #global_navi ul li a {
+    margin: 0;
+  }
+  #global_navi ul li:last-child {
+    width: 100%;
+  }
+  #main {
+    width: 100%;
+    padding: 0 5%;
+    box-sizing: border-box;
+  }
+  #main figure {
+    text-align: center;
+  }
+  #point figure {
+    float: none;
+    margin: 0 0 11px 0;
+  }
+  #side_banner ul li {
+    text-align: center;
+    margin: 11px auto;
+  }
+  #entry dl dt {
+    float: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  #entry dl dd {
+    width: 100%;
+    margin-left: 0;
+    border-left: none;
+    box-sizing: border-box;
+  }
+  #entry #name, #entry #email, #entry #interest {
+    max-width: 100%;
+  }
+  #entry #detail {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
