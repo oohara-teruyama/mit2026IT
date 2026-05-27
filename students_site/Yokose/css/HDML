@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自己紹介コーナー</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>My Profile</h1>
+    <p>自己紹介</p>
+  </header>
+
+  <main>
+
+    <section class="profile">
+      <img src="profile.jpg" alt="プロフィール画像">
+      <div class="profile-text">
+        <h2>名前</h2>
+        <p>横瀬輝</p>
+
+        <h2>自己紹介</h2>
+        <p>
+          Web制作を勉強中です。<br>
+          HTML・CSS・JavaScriptを使ってサイト制作をしています。
+        </p>
+      </div>
+    </section>
+
+    <section class="skills">
+      <h2>スキル</h2>
+      <ul>
+        <li>HTML / CSS</li>
+        <li>JavaScript</li>
+        <li>デザイン</li>
+      </ul>
+    </section>
+
+    <section class="contact">
+      <h2>連絡先</h2>
+      <p>Email: example@email.com</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 My Profile</p>
+  </footer>
+
+</body>
+</html>
