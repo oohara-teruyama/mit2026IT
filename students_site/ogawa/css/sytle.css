@@ -1,0 +1,350 @@
+@charset "utf-8";
+
+body {
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+a { color: #0184a9; }
+a:visited {color: #a8a8a8; }
+a:hover {
+    color: #4d6aa9;
+    font-weight: bold;
+    text-decoration: none;
+}
+a img { transition: opacity 0.2s linear;}
+a:hover img { opacity: 0.7; }
+p {
+    line-height: 1.6;
+    font-size: 20px;
+}
+img { vertical-align: bottom; }
+#main h1{
+    background-image: url(../images/header_bg.jpg);
+    padding: 30px 30px 30px 20px;
+    font-size: 26px;
+    border-bottom: solid 1px #8b7348;
+}
+#main h2 {
+    font-size: 22px;
+    border: 1px solid #000000;
+    padding: 11px 22px;
+    border-radius: 5px;
+}
+#main h3 {
+    font-size: 18px;
+    border-left: solid 3px #02ffe1;
+    padding: 4px 9px 4px 14px;
+}
+header {
+    width: 980px;
+    margin: 0 auto;;
+}
+header h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 60px;
+    color: #0184a9;
+}
+header #header_contact {
+    float: right;
+    margin: 35px 0 0;
+}
+#global_navi {
+    width: 1000px;
+    clear: both;
+    overflow: hidden;
+}
+#global_navi ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#global_navi ul li {
+    width: 245px;
+    float: left;
+    margin-right: 1px;
+    text-align: center;
+}
+#global_navi ul li a {
+    display: block;
+    padding: 20px;
+    background-color: #96c6a3;
+    color: #0184a9;
+    text-decoration: none;
+    transition: background-color 0.2s linear;
+}
+#global_navi ul li.current a {
+    background-color: #70c084;
+}
+#global_navi ul li a:hover {
+    background-color: #ade0bb;
+}
+#wrapper {
+    width: 980px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+footer {
+    background-color: #ade0bb;
+    text-align: center;
+}
+footer #footer_nav {
+    background-color: #e0f7e6;
+    padding: 10px 0;
+}
+footer #footer_nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+footer #footer_nav li {
+    display: inline;
+    border-left: solid 1px #aaa;
+    margin-left: 8px;
+    padding-left: 8px;
+    font-size: smaller;
+}
+footer #footer_nav li:last-child {
+    border-right: solid 1px #aaa;
+    padding: 0 8px;
+}
+footer small {
+    display: block;
+    padding: 8px 0;
+    color: #0184a9;
+}
+#breadcrumb { font-size: smaller;}
+#breadcrumb ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#breadcrumb ol li { display: inline; }
+#breadcrumb ol li::after {
+    content: ">";
+    padding-left: 7px;
+}
+#breadcrumb ol li:last-child::after { content: none; }
+#main_visual {
+    width: 980px;
+    height: 440px;
+    margin: 0 auto 48px;
+}
+#point { margin-bottom: 30px;}
+#point section {
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+#point figure {
+    float: right;
+    margin: 0 0 0 16px;
+}
+#point figcaption {
+    font-size: 12px;
+    text-align: center;
+}
+#news dl { overflow: hiddien; }
+#news dt {
+    width: 8em;
+    float: left;
+    margin-bottom: 10px;
+    clear: both;
+}
+#news dd {
+    margin-left: 8em;
+    margin-bottom: 10px;
+}
+#course table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+}
+#course th,
+#course td {
+    border: 1px solid #c7c7c7;
+    padding: 8px;
+}
+#course th {
+    background-color: #f1ede4;
+    text-align: left;
+    width: 5em;
+}
+#gallery ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#gallery ul li {
+    width: 220px;
+    margin: 0 30px 30px 0;
+    padding: 10px 0;
+    border: solid 1px #ccc;
+    float: left;
+    text-align: center;
+    color: #b7a077;
+    font-weight: bold;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+}
+#gallery ul li:nth-child(3n) {
+    margin-right: 0;
+}
+#entry dl {
+    background: #f1ede4;
+    border: 1px solid #bbb;
+    border-top: 0;
+}
+#entry dl dt,
+#entry dl dd {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+#entry dl dt {
+    width: 13em;
+    float: left;
+    clear: both;
+    font-weight: bold;
+}
+#entry dl dd {
+    background-color: #fff;
+    border-left: 1px solid #ddd;
+    margin-left: 13em;
+}
+.must { color: #f00;}
+#entry #name {
+    width: 15em;
+    padding: 3px;
+}
+#entry #email {
+    width: 25em;
+    padding: 3px;
+}
+#entry #category2,
+#entry #category3
+#entry #questionnaire2
+#entry #questionnaire3 {
+    margin-left: 15px;
+}
+#entry #detail {
+    width: 36em;
+    height: 15em;
+}
+#entry #submit_button_cover {
+    text-align: center;
+}
+#entry #submit_button {
+    background-color: #b7a077;
+    border: 1px solid #b7a077;
+    padding: 15px 100px;
+    border-radius: 10px;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.1s linear;
+}
+#entry #submit_button:hover {
+    background-color: #c7ae81;
+}
+#like img {
+    margin-right: 30px;
+    width: 250px;
+}
+#like #ELDEN {
+    margin-bottom: 210px;
+}
+#like #arknights {
+    margin-bottom: 150px;
+    margin-top: 0;
+}
+#like #LoL {
+    margin-bottom: 60px;
+}
+#akunn img {
+    margin-right: 30px;
+    width: 250px;
+}
+#ziggru img {
+    width: 300px;
+    margin-right: 30px;
+}
+@media screen and (max-width : 767px){
+    img {
+        max-width: 100%;
+    }
+    header,
+    #global_navi,
+    #wrapper{
+        width: 100%;
+    }
+    header h1 {
+        float: none;
+        text-align: center;
+    }
+    header h1 img {
+        width: 50%;
+    }
+    #global_navi ul li {
+        width: 50%;
+        padding: 0.5px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    #global_navi ul li a {
+        margin: 0;
+    }
+    #main {
+        width: 100%;
+        padding: 0 5%;
+        box-sizing: border-box;
+    }
+    #main figure {
+        text-align: bottom;
+    }
+    #main_visual {
+        width: 100%;
+        height: auto;
+    }
+    #point figure {
+        float: none;
+        margin: 0 0 11px 0;
+    }
+    #entry dl dt {
+        float: none;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    #entry dl dd {
+        width: 100%;
+        margin-left: 0;
+        border-left: none;
+        box-sizing: border-box;
+    }
+    #entry #mame,#entry #email,#entry #interest {
+        max-width: 100%;
+    }
+    #entry #detail {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    #like img{
+        margin-right: 100px;
+    }
+    #like #ELDEN{
+        margin-bottom: 0;
+    }
+    #like #arknights{
+        margin-bottom: 0;
+    }
+    #like #LoL{
+        margin-bottom: 0;
+    }
+    #AlphaAzur img{
+        margin-right: 100px;
+    }
+    #ALphaAzur #akunn{
+        margin-bottom: 0;
+    }
+    #AlphaAzur #ziggru{
+        margin-bottom: 0;
+    }
+}
